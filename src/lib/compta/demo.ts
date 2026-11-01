@@ -124,8 +124,8 @@ export function buildComptaDemo() {
       DEMO_CUSTOMERS.forEach((c, i) => {
         const ht = round2(S * c.weight), tva = round2(ht * 0.2);
         const e = mk("VT", d(y, m, 25), `Facture ${c.name}`, `FA-${y}-${String(m * 5 + i + 1).padStart(4, "0")}`, [
-          ["3421", "Facture client", round2(ht + tva), 0, c.name], ["7111", "Ventes de marchandises", round2(ht * 0.6), 0 + 0], ["7121", "Ventes de produits", 0, round2(ht - round2(ht * 0.6))], ["4455", "TVA facturée 20 %", 0, tva],
-        ].map((l, k) => (k === 1 ? ["7111", "Ventes de marchandises", 0, round2(ht * 0.6)] : l)) as L[]);
+          ["3421", "Facture client", round2(ht + tva), 0, c.name], ["7111", "Ventes de marchandises", 0, round2(ht * 0.6)], ["7121", "Ventes de produits", 0, round2(ht - round2(ht * 0.6))], ["4455", "TVA facturée 20 %", 0, tva],
+        ]);
         tvaPrev.col += tva;
         clients.push({ entryId: e.id, lineId: e.lines[0]!.id, amount: e.lines[0]!.debit, due: m, tiers: c.name });
       });
