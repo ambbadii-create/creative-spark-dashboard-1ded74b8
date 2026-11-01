@@ -419,7 +419,7 @@ export const RATIOS: RatioDef[] = [
 export type RatioInputs = { bal: Bal; openBal: Bal; days: number; vatRate: number };
 export function computeRatios({ bal, openBal, days, vatRate }: RatioInputs): Record<string, number | null> {
   const b = bilan(bal), bo = bilan(openBal), s = sig(bal), r = cpc(bal);
-  const ca = round2(-net(bal, "711") - net(bal, "712") - net(bal, "713") * 0 - net(bal, "7124"));
+  const ca = chiffreAffaires(bal);
   const caTtc = ca * (1 + vatRate / 100);
   const achatsTtc = (net(bal, "6111") + net(bal, "6121") + net(bal, "613") + net(bal, "614")) * (1 + vatRate / 100);
   const dct = b.passifCirculant + b.tresoreriePassif;
