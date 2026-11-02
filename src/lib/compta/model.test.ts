@@ -68,7 +68,7 @@ describe("jeu de démonstration", () => {
   it("ratios calculés sans dénominateur nul", () => {
     const r = computeRatios({ bal: balances(entries, { year: 2026, to: 9 }), openBal: balances(entries, { year: 2026, to: 9, onlyOpening: true }), days: 304, vatRate: 20 });
     expect(Object.values(r).every((v) => v === null || Number.isFinite(v))).toBe(true);
-    expect(r.roe).not.toBeNull();
+    expect(r["roe"]).not.toBeNull();
   });
 });
 
