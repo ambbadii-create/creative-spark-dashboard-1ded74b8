@@ -33,7 +33,7 @@ export const Amt = ({ v, className }: { v: number | null | undefined; className?
 );
 
 /** Cellule de variation : verte si favorable, rouge sinon. */
-export function VarCells({ cur, prev, inverse, hasPrev = true }: { cur: number; prev: number; inverse?: boolean; hasPrev?: boolean }) {
+export function VarCells({ cur, prev, inverse, hasPrev = true }: { cur: number; prev: number; inverse?: boolean | undefined; hasPrev?: boolean }) {
   if (!hasPrev) return <><td className={cn("py-2 pr-3 text-xs text-muted-foreground", num)}>n.d.</td><td className={cn("py-2 pr-3 text-xs text-muted-foreground", num)}>n.d.</td></>;
   const d = cur - prev, p = variationPct(cur, prev);
   const good = Math.abs(d) < 0.01 ? null : inverse ? d < 0 : d > 0;
